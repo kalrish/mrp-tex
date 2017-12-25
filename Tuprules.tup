@@ -1,0 +1,18 @@
+.gitignore
+
+# Required to find installed Lua initialization scripts
+export LUATEXDIR
+# Required on Windows by Kpathsea
+export USERPROFILE
+export OSFONTDIR
+
+include engines.tup/@(LUATEX_ENGINE).tup
+
+#!optimize_pdf = |> @(GS) -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=%o -f %f |> %B-optimized.pdf
+#!optimize_pdf = |> pdftk %f output %o compress |> %B-optimized.pdf
+
+#!linearize_pdf = |> @(GS) -q -dNOPAUSE -dBATCH -dFastWebView -sDEVICE=pdfwrite -sOutputFile=%o -f %f |> %B-linearized.pdf
+#!linearize_pdf = |> qpdf --linearize %f %o |> %B-linearized.pdf
+
+#!protect_pdf = |> pdftk %f output %o owner_pw foopass |> %B-protected.pdf
+#!protect_pdf = |> qpdf --encrypt "" foopass 256 --extract=y --print=none --modify=none -- %f %o |> %B-protected.pdf

@@ -1,0 +1,26 @@
+{
+	"a2": {
+		"height": "420mm",
+		"width": "594mm"
+	},
+	"a3": {
+		"height": "297mm",
+		"width": "420mm"
+	},
+	"a4": {
+		"height": "297mm",
+		"width": "210mm"
+	},
+	"b3": {
+		"height": "353mm",
+		"width": "500mm"
+	},
+	"b5": {
+		"height": "250mm",
+		"width": "176mm"
+	},
+	"usletter": {
+		"height": "11in",
+		"width": "8.5in"
+	}
+}

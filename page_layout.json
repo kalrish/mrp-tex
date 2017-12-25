@@ -1,0 +1,26 @@
+{
+	"page": {
+		"height": "190mm"
+	},
+	"margins": {
+		"top": "23mm",
+		"bottom": "20mm",
+		"lateral": "17mm"
+	},
+	"header": {
+		"height": "12pt"
+	},
+	"headsep": "30pt",
+	"column": {
+		"width": "105mm"
+	},
+	"inter_column_separation": 2330850,
+	"after_chapter_title_skip": "7mm",
+	"after_section_heading_skip": "5mm",
+	"around_section_skip": "24pt",
+	"inter_paragraph_skip": "5mm",
+	"footskip": "50pt",
+	"footer": {
+		"height": "14pt"
+	}
+}

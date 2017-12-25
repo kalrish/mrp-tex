@@ -1,0 +1,13 @@
+\catcode`\{=1
+\catcode`\}=2
+\catcode`\^=7
+\catcode`\^^I=10
+
+\directlua{dofile("core.lua")}
+
+\everyjob={
+	% Set up Lua module loading
+	\directlua{lua.getbytecode(1)()}
+}
+
+\dump

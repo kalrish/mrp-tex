@@ -1,0 +1,72 @@
+include_rules
+
+
+ifeq (@(COLLECT_LUA_MODULES),y)
+	: setup.lua |> !texluac |>
+	
+	: lua_modules/<lua_modules> |> echo %<lua_modules> >%o |> lua_module_list
+endif
+
+ifeq (@(COLLECT_LUA_MODULES),y)
+	: lua_module_list lua_modules/<lua_modules> |> $(LUATEX) --ini --interaction=nonstopmode $(LUATEX_FLAGS) --jobname=core -- core.ini.tex |> core.log core.fmt
+else
+	: |> $(LUATEX) --ini --interaction=nonstopmode $(LUATEX_FLAGS) --jobname=core -- core.ini.tex |> core.log core.fmt
+endif
+
+: core.fmt |> $(LUATEX) --ini --interaction=nonstopmode $(LUATEX_FLAGS) --jobname=tasting -- "&core" tasting.ini.tex |> tasting.log tasting.fmt
+
+: tasting.fmt |> $(LUATEX) --interaction=nonstopmode $(LUATEX_FLAGS) --fmt=tasting --jobname=taste-digital --output-format=pdf -- taste.tex |> taste-digital.log taste-digital.pdf
+
+: foreach papers.json page_layout.json |> json2lua %f %o |> %B.lua {json2lua}
+: foreach {json2lua} |> !texluac |>
+: |> json2lua ../document.json %o |> document.lua
+: document.lua |> !texluac |> {common}
+
+#: |> tup varsed fonts.txt.in %o |> fonts.txt
+
+: |> echo $(TEXLUA_BYTECODE_EXTENSION) >%o |> texlua_bytecode_extension
+ifeq (@(COLLECT_LUA_MODULES),y)
+	: core.fmt lua_module_list lua_modules/<lua_modules> texlua_bytecode_extension setup.$(TEXLUA_BYTECODE_EXTENSION) papers.$(TEXLUA_BYTECODE_EXTENSION) page_layout.$(TEXLUA_BYTECODE_EXTENSION) |> $(LUATEX) --ini --interaction=nonstopmode $(LUATEX_FLAGS) --jobname=base -- "&core" base.ini.tex |> base.log base.fmt
+else
+	: core.fmt texlua_bytecode_extension papers.$(TEXLUA_BYTECODE_EXTENSION) page_layout.$(TEXLUA_BYTECODE_EXTENSION) |> $(LUATEX) --ini --interaction=nonstopmode $(LUATEX_FLAGS) --jobname=base -- "&core" base.ini.tex |> base.log base.fmt
+endif
+
+ifeq (@(PRINT_FORMAT),dvi)
+	: base.fmt |> $(LUATEX) --ini --interaction=nonstopmode $(LUATEX_FLAGS) --jobname=base-print-dvi -- "&base" base-driver.ini.tex |> base-print-dvi.log base-print-dvi.fmt
+endif
+
+: |> echo @(PK_RESOLUTION) >%o |> pk_resolution.txt
+: base.fmt pk_resolution.txt |> $(LUATEX) --ini --interaction=nonstopmode $(LUATEX_FLAGS) --jobname=base-digital-pdf -- "&base" base-driver.ini.tex |> base-digital-pdf.log base-digital-pdf.fmt
+ifeq (@(PRINT_FORMAT),pdf)
+	: base.fmt pk_resolution.txt |> $(LUATEX) --ini --interaction=nonstopmode $(LUATEX_FLAGS) --jobname=base-print-pdf -- "&base" base-driver.ini.tex |> base-print-pdf.log base-print-pdf.fmt
+endif
+
+
+#: |> gsftopk |>
+
+
+: base-digital-pdf.fmt {common} |> $(LUATEX) --interaction=nonstopmode $(LUATEX_FLAGS) --fmt=base-digital-pdf --jobname=mrp-digital --output-format=pdf -- main.tex |> mrp-digital.log mrp-digital.pdf
+
+: mrp-digital.pdf |> @(GS) -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=%o -f %f |> %B-optimized-gs.pdf
+: mrp-digital.pdf |> pdftk %f output %o compress |> %B-optimized-pdftk.pdf
+
+# For public use (i.e. to be sent in emails and made available for download)
+: mrp-digital.pdf |> qpdf --encrypt "" foopass 256 --extract=y --print=none --modify=none --extract=y -- %f %o |> %B-public.pdf
+
+# For web use (i.e. to be streamed)
+: mrp-digital.pdf |> qpdf --linearize %f %o |> %B-web.pdf
+
+
+: base-print-@(PRINT_FORMAT).fmt {common} |> $(LUATEX) --interaction=nonstopmode $(LUATEX_FLAGS) --fmt=base-print-@(PRINT_FORMAT) --jobname=mrp-print-@(PRINT_PAPER_TOGETHER) --output-format=@(PRINT_FORMAT) -- main.tex |> mrp-print-@(PRINT_PAPER_TOGETHER).log mrp-print-@(PRINT_PAPER_TOGETHER).@(PRINT_FORMAT)
+ifeq (@(PRINT_FORMAT),dvi)
+	: mrp-print-@(PRINT_PAPER_TOGETHER).dvi |> dvips -M* -o %o %f |> mrp-print-@(PRINT_PAPER_TOGETHER).ps
+endif
+
+: base-print-@(PRINT_FORMAT).fmt {common} |> $(LUATEX) --interaction=nonstopmode $(LUATEX_FLAGS) --fmt=base-print-@(PRINT_FORMAT) --jobname=mrp-split-@(PRINT_PAPER_SPLIT)-english --output-format=@(PRINT_FORMAT) -- main.tex |> mrp-split-@(PRINT_PAPER_SPLIT)-english.log mrp-split-@(PRINT_PAPER_SPLIT)-english.@(PRINT_FORMAT)
+: base-print-@(PRINT_FORMAT).fmt {common} |> $(LUATEX) --interaction=nonstopmode $(LUATEX_FLAGS) --fmt=base-print-@(PRINT_FORMAT) --jobname=mrp-split-@(PRINT_PAPER_SPLIT)-spanish --output-format=@(PRINT_FORMAT) -- main.tex |> mrp-split-@(PRINT_PAPER_SPLIT)-spanish.log mrp-split-@(PRINT_PAPER_SPLIT)-spanish.@(PRINT_FORMAT)
+: base-print-@(PRINT_FORMAT).fmt {common} |> $(LUATEX) --interaction=nonstopmode $(LUATEX_FLAGS) --fmt=base-print-@(PRINT_FORMAT) --jobname=mrp-split-@(PRINT_PAPER_SPLIT)-german --output-format=@(PRINT_FORMAT) -- main.tex |> mrp-split-@(PRINT_PAPER_SPLIT)-german.log mrp-split-@(PRINT_PAPER_SPLIT)-german.@(PRINT_FORMAT)
+ifeq (@(PRINT_FORMAT),dvi)
+endif
+ifeq (@(PRINT_FORMAT),pdf)
+	: mrp-split-@(PRINT_PAPER_SPLIT)-english.pdf mrp-split-@(PRINT_PAPER_SPLIT)-spanish.pdf mrp-split-@(PRINT_PAPER_SPLIT)-german.pdf |> qpdf --empty --pages mrp-split-@(PRINT_PAPER_SPLIT)-english.pdf 1-z mrp-split-@(PRINT_PAPER_SPLIT)-spanish.pdf 1-z mrp-split-@(PRINT_PAPER_SPLIT)-german.pdf 1-z -- %o |> mrp-split-@(PRINT_PAPER_SPLIT).pdf
+endif

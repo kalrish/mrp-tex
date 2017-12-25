@@ -1,0 +1,29 @@
+\catcode`\~=13
+
+\chardef\setuploaderbytecodeslot=4
+
+\directlua{dofile("base.lua")}
+
+\tracinglostchars=1
+%\tracingstats=2
+\tracingonline=1
+
+\output={\errmessage{Output routine invoked}\shipout\box\outputbox}
+
+\dimendef\paperheight=10
+\dimendef\columnwidth=11
+
+\def~{\penalty10000\ }
+%\baselineskip=14pt
+%\parfillskip=0pt plus 1filll
+\def\parsetup{
+	%\protrudechars=1
+	\lmrTENr
+}
+\let\parsetupenglish\relax
+\let\parsetupspanish\relax
+\let\parsetupgerman\relax
+
+\font\yinit=yinit scaled 850
+
+\dump

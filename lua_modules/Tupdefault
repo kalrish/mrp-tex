@@ -1,0 +1,5 @@
+include_rules
+
+ifeq (@(COLLECT_LUA_MODULES),y)
+	: foreach *.lua |> !texluac |> | $(TOP)/<lua_modules>
+endif

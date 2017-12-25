@@ -1,0 +1,82 @@
+\input{\jobname.tex}
+
+\directlua{dofile("taste.lua")}
+
+\def\deflabel#1#2{
+	\expandafter\long\expandafter\def\csname label#1\endcsname{\hbox{\textfont#2\hskip10mm}}
+}
+
+\begingroup
+	\deflabel1{Trajan}
+	\expandafter\def\csname setup1\endcsname{\trajan}
+	\deflabel2{Trajanus}
+	\expandafter\def\csname setup2\endcsname{\trajanus}
+	\deflabel3{Cinzel}
+	\expandafter\def\csname setup3\endcsname{\cinzel}
+	
+	\def\interrowmaterial{\vskip 15pt}
+	
+	\def\sample{Praeambulum}
+	\try
+	
+	\def\sample{PRAEAMBULUM}
+	\try
+\endgroup
+
+\begingroup
+	\deflabel1{Augusta PostScript Type 1}
+	\expandafter\def\csname setup1\endcsname{\augustaps}
+	\deflabel2{Augusta TrueType}
+	\expandafter\def\csname setup2\endcsname{\augustatt}
+	\deflabel3{Alte Schwabacher PostScript Type 1}
+	\expandafter\def\csname setup3\endcsname{\alteschwabacherps}
+	\deflabel4{Alte Schwabacher TrueType}
+	\expandafter\def\csname setup4\endcsname{\alteschwabachertt}
+	\deflabel5{Caslon Gotisch}
+	\expandafter\def\csname setup5\endcsname{\caslon}
+	\deflabel6{Breitkopf Fraktur}
+	\expandafter\def\csname setup6\endcsname{\bkfraktur}
+	\deflabel7{Durwent}
+	\expandafter\def\csname setup7\endcsname{\durwent}
+	\deflabel8{Old English PostScript Type 1}
+	\expandafter\def\csname setup8\endcsname{\oldenglishps}
+	\deflabel9{Old English TrueType}
+	\expandafter\def\csname setup9\endcsname{\oldenglishtt}
+	\deflabel{10}{Old English OpenType}
+	\expandafter\def\csname setup10\endcsname{\oldenglishot}
+	\deflabel{11}{Iglesia}
+	\expandafter\def\csname setup11\endcsname{\iglesia}
+	
+	\def\interrowmaterial{\vskip 10pt}
+	
+	\def\sample{Tratado sobre el bien\hfil}
+	\try
+	
+	\def\sample{Kalrish Bäakjen\hfil}
+	\try
+	
+	\def\sample{David Joaquín Shourabi Porcel\hfil}
+	\try
+\endgroup
+
+\begingroup
+	\deflabel1{yinit}
+	\expandafter\def\csname setup1\endcsname{\yinit}
+	\deflabel2{Neugotische Initialen}
+	\expandafter\def\csname setup2\endcsname{\nginit}
+	\deflabel3{Rediviva Zierbuchstaben}
+	\expandafter\def\csname setup3\endcsname{\rdvzbs}
+	\deflabel4{Romantik}
+	\expandafter\def\csname setup4\endcsname{\romantik}
+	\deflabel5{EileenCaps Black}
+	\expandafter\def\csname setup5\endcsname{\ecb}
+	\deflabel6{Unger Fraktur Zierbuchstaben}
+	\expandafter\def\csname setup6\endcsname{\ufkzbs}
+	
+	\def\interrowmaterial{\vskip 15pt}
+	
+	\def\sample{I\hfil{}R\hfil{}S}
+	\try
+\endgroup
+
+\end

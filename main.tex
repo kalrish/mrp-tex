@@ -1,0 +1,207 @@
+\directlua{lua.getbytecode(\the\setuploaderbytecodeslot)()}
+\begingroup
+	%\setbox1=\vbox to \paperheight{%
+	%	\font\augustabig=Augusta at 32pt
+	%	\font\augustasml=Augusta at 24pt
+	%	\font\alteschsml=AlteSchwabacher at 18pt
+	%	\font\alteschnxt=AlteSchwabacher at 22pt
+	%	\font\alteschmed=AlteSchwabacher at 26pt
+	%	\font\alteschbig=AlteSchwabacher at 28pt
+	%	\vskip 80pt
+	%	\hbox to \columnwidth{\hfil\alteschmed Inquiry\hfil}%
+	%	\vskip 16pt
+	%	\hbox to \columnwidth{\hfil\alteschsml into the\hfil}%
+	%	\vskip 15pt
+	%	\hbox to \columnwidth{\hfil\alteschbig course of action\hfil}%
+	%	%
+	%		%\vskip 16pt
+	%		%\hbox to \columnwidth{\hfil\alteschsml that shall be followed\hfil}%
+	%		%\vskip 12pt
+	%		%\hbox to \columnwidth{\hfil{\alteschsml by the}\hskip 5pt\relax{\alteschnxt european man}\hfil}%
+	%	%
+	%		\vskip 15pt
+	%		\hbox to \columnwidth{\hfil\alteschsml that shall be followed by the\hfil}%
+	%		\vskip 15pt
+	%		\hbox to \columnwidth{\hfil\alteschnxt European man\hfil}%
+	%	%
+	%	\vskip 24pt
+	%	\hbox to \columnwidth{\hfil\alteschsml as conducted by\hfil}%
+	%	\vskip 87pt
+	%	%\hbox to \columnwidth{\hfil{\alteschsml with the cogency of}\hskip 6pt\relax\vtop{\hbox{\alteschnxt reason}}\hskip 5pt\relax{\alteschsml and}\hskip 4pt\relax\vtop{\hbox{\alteschnxt evidence}}\hfil}%
+	%	\hbox to \columnwidth{\hfil{\alteschsml by virtue of}\hskip 6pt\relax\vtop{\hbox{\alteschnxt reason}}\hfil}%
+	%	\vskip 14pt
+	%	\hbox to \columnwidth{\hfil{\alteschsml with the cogency of}\hskip 6pt\relax\vtop{\hbox{\alteschnxt evidence}}\hfil}%
+	%	\vfil%
+	%}
+	\setbox1=\vbox to \paperheight{%
+		\font\augustabig=Augusta at 32pt
+		\font\augustasml=Augusta at 24pt
+		\font\alteschsml=AlteSchwabacher at 18pt
+		\font\alteschnxt=AlteSchwabacher at 22pt
+		\font\alteschmed=AlteSchwabacher at 26pt
+		\font\alteschbig=AlteSchwabacher at 28pt
+		\vskip 82pt
+		\hbox to \columnwidth{\hfil\alteschmed Inquiry\hfil}%
+		\vskip 24pt
+		\hbox to \columnwidth{\hfil\alteschsml into the\hfil}%
+		\vskip 24pt
+		%\hbox to \columnwidth{\hfil\alteschbig good\hfil}%
+		\hbox to \columnwidth{\hfil\alteschbig right\hfil}%
+		\vskip 48pt
+		\hbox to \columnwidth{\hfil\alteschsml as conducted by\hfil}%
+		\vskip 137pt
+		%\hbox to \columnwidth{\hfil{\alteschsml with the cogency of}\hskip 6pt\relax\vtop{\hbox{\alteschnxt reason}}\hskip 5pt\relax{\alteschsml and}\hskip 4pt\relax\vtop{\hbox{\alteschnxt evidence}}\hfil}%
+		\hbox to \columnwidth{\hfil{\alteschsml by virtue of}\hskip 6pt\relax\vtop{\hbox{\alteschnxt reason}}\hfil}%
+		\vskip 14pt
+		\hbox to \columnwidth{\hfil{\alteschsml with the cogency of}\hskip 6pt\relax\vtop{\hbox{\alteschnxt evidence}}\hfil}%
+		\vfil%
+	}
+	%\setbox2=\vbox to \paperheight{%
+	%	\font\augustabig=Augusta at 30pt
+	%	\font\augustamed=Augusta at 24pt
+	%	\font\augustasml=Augusta at 20pt
+	%	\font\alteschsml=AlteSchwabacher at 18pt
+	%	\font\alteschnxt=AlteSchwabacher at 20pt
+	%	\font\alteschmed=AlteSchwabacher at 28pt
+	%	\vskip 82pt
+	%	\hbox to \columnwidth{\hfil\alteschmed Tratado\hfil}%
+	%	\vskip 24.5pt
+	%	\hbox to \columnwidth{\hfil\alteschsml sobre la correcta\hfil}%
+	%	\vskip 21.5pt
+	%	\hbox to \columnwidth{\hfil\augustabig sentencia del juicio\hfil}%
+	%	\vskip 18pt
+	%	\hbox to \columnwidth{\hfil\alteschnxt del hombre europeo\hfil}%
+	%	\vskip 35pt
+	%	\hbox to \columnwidth{\hfil\alteschsml de\hfil}%
+	%	\vskip 40pt
+	%	\hbox to \columnwidth{\hfil\augustasml David Joaquín Shourabi Porcel\hfil}%
+	%	\vskip 40pt
+	%	\hbox to \columnwidth{\hfil\augustasml en que se pretende\hfil}%
+	%	\vskip 10pt
+	%	\hbox to \columnwidth{\hfil\augustasml dilucidar y esclarecer\hfil}%
+	%	\vskip 10pt
+	%	\hbox to \columnwidth{\hfil\augustasml lo que hubiere de hacer\hfil}%
+	%	\vskip 10pt
+	%	\hbox to \columnwidth{\hfil\augustasml y cómo hubiere de proceder\hfil}%
+	%	\vfil%
+	%}
+	\setbox2=\vbox to \paperheight{%
+		\font\augustabig=Augusta at 30pt
+		\font\augustamed=Augusta at 24pt
+		\font\augustasml=Augusta at 20pt
+		\font\alteschsml=AlteSchwabacher at 18pt
+		\font\alteschnxt=AlteSchwabacher at 20pt
+		\font\alteschmed=AlteSchwabacher at 28pt
+		\vskip 72pt
+		\hbox to \columnwidth{\hfil\alteschmed Tratado\hfil}%
+		\vskip 24.5pt
+		\hbox to \columnwidth{\hfil\alteschsml sobre el\hfil}%
+		\vskip 21.5pt
+		\hbox to \columnwidth{\hfil\alteschmed bien\hfil}%
+		\vskip 25pt
+		\hbox to \columnwidth{\hfil\alteschnxt en cuanto concierne\hfil}%
+		%\hbox to \columnwidth{\hfil\alteschnxt en cuanto respecta\hfil}%
+		\vskip 9pt
+		\hbox to \columnwidth{\hfil\alteschnxt a hombres y pueblos\hfil}%
+		\vskip 36pt
+		\hbox to \columnwidth{\hfil\alteschsml de\hfil}%
+		\vskip 41pt
+		\hbox to \columnwidth{\hfil\augustasml David Joaquín Shourabi Porcel\hfil}%
+		\vskip 40pt
+		\hbox to \columnwidth{\hfil\augustasml en que se pretende\hfil}%
+		\vskip 10pt
+		\hbox to \columnwidth{\hfil\augustasml dilucidar y esclarecer\hfil}%
+		\vskip 10pt
+		\hbox to \columnwidth{\hfil\augustasml qué se hubiere de hacer\hfil}%
+		\vskip 10pt
+		\hbox to \columnwidth{\hfil\augustasml y cómo se debiere proceder\hfil}%
+		\vfil%
+	}
+	%\setbox3=\vbox to \paperheight{%
+	%	{%
+	%		\font\alteschsml=AlteSchwabacher at 20pt
+	%		\font\alteschmed=AlteSchwabacher at 24pt
+	%		\font\alteschbig=AlteSchwabacher at 26pt
+	%		\vskip 80pt
+	%		\hbox to \columnwidth{\hfil\alteschsml Zu dem\hfil}%
+	%		\vskip 10pt
+	%		\hbox to \columnwidth{\hfil\alteschsml richtigen\hfil}%
+	%		\vskip 10pt
+	%		\hbox to \columnwidth{\hfil\alteschbig Weg\hfil}%
+	%		\vskip 9pt
+	%		\hbox to \columnwidth{\hfil\alteschsml und\hfil}%
+	%		\vskip 11pt
+	%		\hbox to \columnwidth{\hfil\alteschbig Verhalten\hfil}%
+	%		\vskip 12pt
+	%		\hbox to \columnwidth{\hfil\alteschsml des Europäers\hfil}%
+	%		\vskip 10mm
+	%		\hbox to \columnwidth{\hfil\alteschsml von\hfil}%
+	%	}%
+	%	\vskip 81pt
+	%	\hbox to \columnwidth{%
+	%		\font\alteschsml=AlteSchwabacher at 17pt
+	%		\font\alteschmed=AlteSchwabacher at 20pt
+	%		\font\alteschbig=AlteSchwabacher at 22pt
+	%		\hfil%
+	%		\vbox{%
+	%			\baselineskip=24pt
+	%			\hbox{\hskip 10pt\relax\alteschsml durch\hskip 4pt\relax die\hskip 4pt\relax\alteschmed rationale\hskip 4pt\relax\alteschbig Moral\hfil}%
+	%			\hbox{\alteschsml und\hskip 5pt\relax die\hskip 5pt\relax\alteschmed ab%
+	%				s%
+	%				%\char 383
+	%			olute\hskip 4pt\relax\alteschbig Erkenntnis\hfil}%
+	%			\vskip -1pt
+	%			\hbox{\hskip 19pt\relax\alteschsml v\kern 0.5pt e\kern 0.8pt r\kern 0.8pt m\kern 0.5pt ö\kern 0.5pt g\kern 0.5pt e\hskip 7pt\relax de\kern 0.45pt r\hskip 7pt\relax\alteschmed Ve\kern 0.5pt r\kern 0.5pt n\kern 0.5pt u\kern 0.5pt n\kern 0.5pt f\kern 0.5pt t\hfil}%
+	%			\hbox{\hskip 10pt\relax\alteschsml bis\hskip 4.5pt\relax zur\hskip 4.5pt\relax\alteschbig Politik\hskip 5pt\relax\alteschsml des\hskip 4.5pt\relax\alteschmed Willens\hfil}%
+	%		}%
+	%		\hfil%
+	%	}%
+	%	\vfil%
+	%}
+	\setbox3=\vbox to \paperheight{%
+		{%
+			\font\alteschsml=AlteSchwabacher at 20pt
+			\font\alteschmed=AlteSchwabacher at 24pt
+			\font\alteschbig=AlteSchwabacher at 26pt
+			\vskip 91pt
+			\hbox to \columnwidth{\hfil\alteschmed Abhandlung\hfil}%
+			\vskip 18pt
+			\hbox to \columnwidth{\hfil\alteschsml über das\hfil}%
+			\vskip 24pt
+			\hbox to \columnwidth{\hfil\alteschbig Gute\hfil}%
+			\vskip\dimexpr 24mm+8.5pt\relax
+			\hbox to \columnwidth{\hfil\alteschsml von\hfil}%
+		}%
+		\vskip\dimexpr 120pt-8.5pt-4pt\relax
+		\hbox to \columnwidth{%
+			\font\alteschsml=AlteSchwabacher at 17pt
+			\font\alteschmed=AlteSchwabacher at 20pt
+			\font\alteschbig=AlteSchwabacher at 22pt
+			\hfil%
+			\vbox{%
+				\baselineskip=26pt
+				\hbox{\hskip 10pt\relax\alteschsml durch\hskip 4pt\relax die\hskip 4pt\relax\alteschmed rationale\hskip 4pt\relax\alteschbig Moral\hfil}%
+				\hbox{\alteschsml und\hskip 5pt\relax die\hskip 5pt\relax\alteschmed ab%
+					%s%
+					\char 383
+				olute\hskip 4pt\relax\alteschbig Erkenntnis\hfil}%
+				\vskip -1pt
+				\hbox{\hskip 19pt\relax\alteschsml v\kern 0.5pt e\kern 0.8pt r\kern 0.8pt m\kern 0.5pt ö\kern 0.5pt g\kern 0.5pt e\hskip 7pt\relax de\kern 0.45pt r\hskip 7pt\relax\alteschmed Ve\kern 0.5pt r\kern 0.5pt n\kern 0.5pt u\kern 0.5pt n\kern 0.5pt f\kern 0.5pt t\hfil}%
+				\hbox{\hskip 10pt\relax\alteschsml bis\hskip 4.5pt\relax zur\hskip 4.5pt\relax\alteschbig Politik\hskip 5pt\relax\alteschsml des\hskip 4.5pt\relax\alteschmed Willens\hfil}%
+			}%
+			\hfil%
+		}%
+		\vfil%
+	}
+	%\font\lmrTENr=lmr10
+	%\font\smallcaps=lmrsc10
+	\relax
+	\baselineskip=14pt
+	\parfillskip=0pt plus 1filll
+	\relax
+	\luafunction1
+	\relax
+	\luafunction2
+	\relax
+\endgroup
+\end
