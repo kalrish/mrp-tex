@@ -27,8 +27,6 @@ local texio_write_nl = texio.write_nl
 local read_file = require("utils.read_file")
 local store_table = require("utils.store_table")
 
-local bytecode_registry = {}
-
 local collect_modules
 
 do
