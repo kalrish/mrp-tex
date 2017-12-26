@@ -35,10 +35,10 @@ ifeq (@(PRINT_FORMAT),dvi)
 	: base.fmt |> $(LUATEX) --ini --interaction=nonstopmode $(LUATEX_FLAGS) --jobname=base-print-dvi -- "&base" base-driver.ini.tex |> base-print-dvi.log base-print-dvi.fmt
 endif
 
-: |> echo @(PK_RESOLUTION) >%o |> pk_resolution.txt
-: base.fmt pk_resolution.txt |> $(LUATEX) --ini --interaction=nonstopmode $(LUATEX_FLAGS) --jobname=base-digital-pdf -- "&base" base-driver.ini.tex |> base-digital-pdf.log base-digital-pdf.fmt
+: |> echo @(PK_RESOLUTION) >%o |> pk_resolution
+: base.fmt pk_resolution |> $(LUATEX) --ini --interaction=nonstopmode $(LUATEX_FLAGS) --jobname=base-digital-pdf -- "&base" base-driver.ini.tex |> base-digital-pdf.log base-digital-pdf.fmt
 ifeq (@(PRINT_FORMAT),pdf)
-	: base.fmt pk_resolution.txt |> $(LUATEX) --ini --interaction=nonstopmode $(LUATEX_FLAGS) --jobname=base-print-pdf -- "&base" base-driver.ini.tex |> base-print-pdf.log base-print-pdf.fmt
+	: base.fmt pk_resolution |> $(LUATEX) --ini --interaction=nonstopmode $(LUATEX_FLAGS) --jobname=base-print-pdf -- "&base" base-driver.ini.tex |> base-print-pdf.log base-print-pdf.fmt
 endif
 
 
